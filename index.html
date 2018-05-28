@@ -62,6 +62,80 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-css初学" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/05/28/css初学/" class="article-date">
+  <time datetime="2018-05-28T12:00:05.000Z" itemprop="datePublished">2018-05-28</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/05/28/css初学/">css初学</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="初学CSS"><a href="#初学CSS" class="headerlink" title="初学CSS"></a>初学CSS</h1><h4 id="1-引入css"><a href="#1-引入css" class="headerlink" title="1.引入css"></a>1.引入css</h4><p>创建一个css文件，然后用link标签引入文件。</p>
+<pre><code>&lt;link rel=&quot;stylesheet&quot; href=&quot;./xxxx.css&quot;&gt;
+</code></pre><h4 id="2-如何做横向布局"><a href="#2-如何做横向布局" class="headerlink" title="2.如何做横向布局"></a>2.如何做横向布局</h4><pre><code>&lt;li style=&quot;float:left&quot;&gt;
+</code></pre><p>注释：会有bug  因为它本身自带样式</p>
+<p>用本行代码消除样式</p>
+<pre><code>&lt;ul style=&quot;list-style: none; margin= 0&quot; class=&quot;clearfix&quot;&gt;
+</code></pre><p>用float时会有bug</p>
+<p>在css文件做个clearfix类,将下列代码写到所有float元素的爸爸上面</p>
+<pre><code>.clearfix::after{
+    content:&apos;&apos;;
+    display: block;
+    clear: both;
+}
+</code></pre><h4 id="3如何去色、量尺寸、预览字体。"><a href="#3如何去色、量尺寸、预览字体。" class="headerlink" title="3如何去色、量尺寸、预览字体。"></a>3如何去色、量尺寸、预览字体。</h4><h4 id="4-如何使用开发者工具查看样式、继承样式"><a href="#4-如何使用开发者工具查看样式、继承样式" class="headerlink" title="4.如何使用开发者工具查看样式、继承样式"></a>4.如何使用开发者工具查看样式、继承样式</h4><h4 id="5-常见css属性："><a href="#5-常见css属性：" class="headerlink" title="5.常见css属性："></a>5.常见css属性：</h4><p> i.    font-family  font-size  font-weight</p>
+<p> ii. ul、body的默认margin和padding</p>
+<p> iii. color、background-color、margin、padding</p>
+<p> csiv.  line-height<br> 背景高清图 网址  wallhaven</p>
+<p>1.添加大背景图</p>
+<p>在div中<br>方法 img  标签   或者background-img</p>
+<p>background</p>
+<pre><code>&lt;div class=&quot;banner&quot; style=&quot;background-image: url(./img/wallhaven-132847.jpg)&quot;&gt;&lt;/div&gt;
+</code></pre><p>一个元素的高度是由什么决定的？</p>
+<p>div高度尤其内部文档流元素的高度总和决定</p>
+<p>文档流：文档内元素的流动方向</p>
+<p>内联元素  从左往右流动</p>
+<p>块级元素  从上往下</p>
+<p>如何将块级元素在同一行中显示？</p>
+<pre><code>d:ib 快捷键
+
+display: inline-block;
+</code></pre><p>注：有很多bug  还是使用float 更好</p>
+<h4 id="1-脱离文档流"><a href="#1-脱离文档流" class="headerlink" title="1.脱离文档流"></a>1.脱离文档流</h4><pre><code>.topNavBar {
+padding: 20px 16px 20px 16px;
+position: fixed;
+top: 0;
+left: 0;
+</code></pre><p>图像会内缩</p>
+<hr>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/05/28/css初学/" data-id="cjhq7fthp000002x7pzd6hock" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-html标签列表" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2018/05/10/html标签列表/" class="article-date">
@@ -100,7 +174,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/05/10/html标签列表/" data-id="cjgzckdsc0003lbx71dp8hy55" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/05/10/html标签列表/" data-id="cjhq7fti1000502x7zr13uf99" class="article-share-link">Share</a>
       
       
     </footer>
@@ -214,7 +288,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/04/20/HTML简单学习/" data-id="cjgzckds50000lbx7tsjz6u6j" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/04/20/HTML简单学习/" data-id="cjhq7fthy000302x7az6lvn47" class="article-share-link">Share</a>
       
       
     </footer>
@@ -310,7 +384,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/04/13/git入门使用/" data-id="cjgzckdsb0002lbx7cui666nj" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/04/13/git入门使用/" data-id="cjhq7fti0000402x7sd20ceqb" class="article-share-link">Share</a>
       
       
     </footer>
@@ -354,7 +428,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/04/12/第二篇博客/" data-id="cjgzckdse0005lbx7g0ac2jeq" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/04/12/第二篇博客/" data-id="cjhq7fti2000602x79p1sx1tl" class="article-share-link">Share</a>
       
       
     </footer>
@@ -392,7 +466,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/04/10/开博大吉/" data-id="cjgzckdsd0004lbx7x0dxmq4t" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/04/10/开博大吉/" data-id="cjhq7fthx000202x703klyjch" class="article-share-link">Share</a>
       
       
     </footer>
@@ -437,7 +511,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/04/10/hello-world/" data-id="cjgzckds90001lbx7rv8xkx5z" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/04/10/hello-world/" data-id="cjhq7fthv000102x7sr0r7efs" class="article-share-link">Share</a>
       
       
     </footer>
@@ -478,6 +552,10 @@
       <ul>
         
           <li>
+            <a href="/2018/05/28/css初学/">css初学</a>
+          </li>
+        
+          <li>
             <a href="/2018/05/10/html标签列表/">html标签列表</a>
           </li>
         
@@ -491,10 +569,6 @@
         
           <li>
             <a href="/2018/04/12/第二篇博客/">命令行基础学习</a>
-          </li>
-        
-          <li>
-            <a href="/2018/04/10/开博大吉/">开博大吉</a>
           </li>
         
       </ul>
