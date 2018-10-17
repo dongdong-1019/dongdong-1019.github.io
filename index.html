@@ -62,6 +62,72 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-JS数据类型" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/10/17/JS数据类型/" class="article-date">
+  <time datetime="2018-10-17T10:52:01.000Z" itemprop="datePublished">2018-10-17</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/10/17/JS数据类型/">JS数据类型</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="1-简介"><a href="#1-简介" class="headerlink" title="1.简介"></a>1.简介</h1><h5 id="JavaScript-语言的每一个值，都属于某一种数据类型。JavaScript-的数据类型，共有六种。（ES6-又新增了第七种-Symbol-类型的值）"><a href="#JavaScript-语言的每一个值，都属于某一种数据类型。JavaScript-的数据类型，共有六种。（ES6-又新增了第七种-Symbol-类型的值）" class="headerlink" title="JavaScript 语言的每一个值，都属于某一种数据类型。JavaScript 的数据类型，共有六种。（ES6 又新增了第七种 Symbol 类型的值）"></a>JavaScript 语言的每一个值，都属于某一种数据类型。JavaScript 的数据类型，共有六种。（ES6 又新增了第七种 Symbol 类型的值）</h5><ul>
+<li>数值（number）：整数和小数（比如1和3.14）</li>
+<li>字符串（string）：文本（比如Hello World）。</li>
+<li>布尔值（boolean）：表示真伪的两个特殊值，即true（真）和false（假）</li>
+<li>undefined：表示“未定义”或不存在，即由于目前没有定义，所以此处暂时没有任何值</li>
+<li>null：表示空值，即此处的值为空。</li>
+<li>对象（object）：各种值组成的集合。</li>
+<li><h5 id="通常，数值、字符串、布尔值这三种类型，合称为原始类型（primitive-type）的值，即它们是最基本的数据类型，不能再细分了。对象则称为合成类型（complex-type）的值，因为一个对象往往是多个原始类型的值的合成，可以看作是一个存放各种值的容器。至于undefined和null，一般将它们看成两个特殊值。"><a href="#通常，数值、字符串、布尔值这三种类型，合称为原始类型（primitive-type）的值，即它们是最基本的数据类型，不能再细分了。对象则称为合成类型（complex-type）的值，因为一个对象往往是多个原始类型的值的合成，可以看作是一个存放各种值的容器。至于undefined和null，一般将它们看成两个特殊值。" class="headerlink" title="通常，数值、字符串、布尔值这三种类型，合称为原始类型（primitive type）的值，即它们是最基本的数据类型，不能再细分了。对象则称为合成类型（complex type）的值，因为一个对象往往是多个原始类型的值的合成，可以看作是一个存放各种值的容器。至于undefined和null，一般将它们看成两个特殊值。"></a>通常，数值、字符串、布尔值这三种类型，合称为原始类型（primitive type）的值，即它们是最基本的数据类型，不能再细分了。对象则称为合成类型（complex type）的值，因为一个对象往往是多个原始类型的值的合成，可以看作是一个存放各种值的容器。至于undefined和null，一般将它们看成两个特殊值。</h5></li>
+</ul>
+<p>对象又可以分成三个子类型。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1.</span>狭义的对象（object）</span><br><span class="line"><span class="number">2.</span>数组（array）</span><br><span class="line"><span class="number">3.</span>函数（<span class="function"><span class="keyword">function</span>）</span></span><br></pre></td></tr></table></figure>
+<h1 id="2-typeof-运算符"><a href="#2-typeof-运算符" class="headerlink" title="2.typeof 运算符"></a>2.typeof 运算符</h1><p>JavaScript 有三种方法，可以确定一个值到底是什么类型。</p>
+<ul>
+<li><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">- ```instanceof```运算符</span><br><span class="line">- `Object.prototype.toString`方法</span><br><span class="line"></span><br><span class="line">typeof运算符可以返回一个值的数据类型。</span><br><span class="line"></span><br><span class="line">数值、字符串、布尔值分别返回number、string、boolean。</span><br><span class="line"></span><br><span class="line">```js</span><br><span class="line">typeof 123 // &quot;number&quot;</span><br><span class="line">typeof &apos;123&apos; // &quot;string&quot;</span><br><span class="line">typeof false // &quot;boolean&quot;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>函数返回function。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">f</span>(<span class="params"></span>) </span>&#123;&#125;</span><br><span class="line"><span class="keyword">typeof</span> f</span><br><span class="line"><span class="comment">// "function"</span></span><br></pre></td></tr></table></figure>
+<p>undefined返回undefined。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typeof</span> <span class="literal">undefined</span></span><br><span class="line"><span class="comment">// "undefined"</span></span><br></pre></td></tr></table></figure>
+<p>利用这一点，typeof可以用来检查一个没有声明的变量，而不报错。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">v</span><br><span class="line"><span class="comment">// ReferenceError: v is not defined</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">typeof</span> v</span><br><span class="line"><span class="comment">// "undefined"</span></span><br></pre></td></tr></table></figure>
+<p>上面代码中，变量v没有用var命令声明，直接使用就会报错。但是，放在typeof后面，就不报错了，而是返回undefined。</p>
+<p>实际编程中，这个特点通常用在判断语句。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 错误的写法</span></span><br><span class="line"><span class="keyword">if</span> (v) &#123;</span><br><span class="line">  <span class="comment">// ...</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// ReferenceError: v is not defined</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 正确的写法</span></span><br><span class="line"><span class="keyword">if</span> (<span class="keyword">typeof</span> v === <span class="string">"undefined"</span>) &#123;</span><br><span class="line">  <span class="comment">// ...</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>对象返回object。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typeof</span> <span class="built_in">window</span> <span class="comment">// "object"</span></span><br><span class="line"><span class="keyword">typeof</span> &#123;&#125; <span class="comment">// "object"</span></span><br><span class="line"><span class="keyword">typeof</span> [] <span class="comment">// "object"</span></span><br></pre></td></tr></table></figure>
+<p>null返回object。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typeof</span> <span class="literal">null</span> <span class="comment">// "object"</span></span><br></pre></td></tr></table></figure>
+<p>null的类型是object，这是由于历史原因造成的。1995年的 JavaScript 语言第一版，只设计了五种数据类型（对象、整数、浮点数、字符串和布尔值），没考虑null，只把它当作object的一种特殊值。后来null独立出来，作为一种单独的数据类型，为了兼容以前的代码，typeof null返回object就没法改变了。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/10/17/JS数据类型/" data-id="cjnd1geps0001p4x7bm3n39hd" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-CSS常见布局写法" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2018/06/12/CSS常见布局写法/" class="article-date">
@@ -109,7 +175,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/06/12/CSS常见布局写法/" data-id="cjibqbln200009qx75nsu0m8y" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/06/12/CSS常见布局写法/" data-id="cjnd1gepn0000p4x7rnmyjsdl" class="article-share-link">Share</a>
       
       
     </footer>
@@ -183,7 +249,7 @@ left: 0;
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/05/28/css初学/" data-id="cjibqbln500019qx7wti4qntz" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/05/28/css初学/" data-id="cjnd1gepv0003p4x7bzbaak18" class="article-share-link">Share</a>
       
       
     </footer>
@@ -231,7 +297,7 @@ left: 0;
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/05/10/html标签列表/" data-id="cjibqbln900059qx7j6whejjy" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/05/10/html标签列表/" data-id="cjnd1gepy0006p4x7ji19c57e" class="article-share-link">Share</a>
       
       
     </footer>
@@ -345,7 +411,7 @@ left: 0;
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/04/20/HTML简单学习/" data-id="cjibqbln700029qx7u1ulum03" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/04/20/HTML简单学习/" data-id="cjnd1gepu0002p4x7f9sqggkw" class="article-share-link">Share</a>
       
       
     </footer>
@@ -441,7 +507,7 @@ left: 0;
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/04/13/git入门使用/" data-id="cjibqbln800039qx77o7prix0" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/04/13/git入门使用/" data-id="cjnd1gepw0004p4x7tqf9uj9t" class="article-share-link">Share</a>
       
       
     </footer>
@@ -485,7 +551,7 @@ left: 0;
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/04/12/第二篇博客/" data-id="cjibqblna00069qx705oxzp1m" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/04/12/第二篇博客/" data-id="cjnd1geqa0008p4x7igt67wlz" class="article-share-link">Share</a>
       
       
     </footer>
@@ -523,7 +589,7 @@ left: 0;
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/04/10/开博大吉/" data-id="cjibqbln900049qx7nxj84ok7" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/04/10/开博大吉/" data-id="cjnd1gepz0007p4x79tkc0hh3" class="article-share-link">Share</a>
       
       
     </footer>
@@ -568,7 +634,7 @@ left: 0;
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/04/10/hello-world/" data-id="cjibqblnl00079qx7vbf7nva7" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/04/10/hello-world/" data-id="cjnd1gepx0005p4x7ds2o5gpe" class="article-share-link">Share</a>
       
       
     </footer>
@@ -596,7 +662,7 @@ left: 0;
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a></li></ul>
     </div>
   </div>
 
@@ -607,6 +673,10 @@ left: 0;
     <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2018/10/17/JS数据类型/">JS数据类型</a>
+          </li>
         
           <li>
             <a href="/2018/06/12/CSS常见布局写法/">CSS常见布局写法</a>
@@ -622,10 +692,6 @@ left: 0;
         
           <li>
             <a href="/2018/04/20/HTML简单学习/">HTML简单学习</a>
-          </li>
-        
-          <li>
-            <a href="/2018/04/13/git入门使用/">git入门使用</a>
           </li>
         
       </ul>
