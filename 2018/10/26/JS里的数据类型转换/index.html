@@ -14,7 +14,7 @@
 <meta property="og:site_name" content="第一篇博客">
 <meta property="og:description" content="类型转换任意类型转字符串1.String(x)12345678910String(1)//&quot;1&quot;String(true)//&quot;true&quot;String(null)//&quot;null&quot;String(undefined)//&quot;undefined&quot;String(&amp;#123;&amp;#125;)//&quot;[object Object]&quot; 2. x.toString()12345678910111213141516(1).">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-10-25T16:31:36.487Z">
+<meta property="og:updated_time" content="2018-10-25T16:38:58.126Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JS里的数据类型转换">
 <meta name="twitter:description" content="类型转换任意类型转字符串1.String(x)12345678910String(1)//&quot;1&quot;String(true)//&quot;true&quot;String(null)//&quot;null&quot;String(undefined)//&quot;undefined&quot;String(&amp;#123;&amp;#125;)//&quot;[object Object]&quot; 2. x.toString()12345678910111213141516(1).">
@@ -99,7 +99,13 @@
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = &#123;<span class="attr">name</span>: <span class="string">'a'</span>&#125;</span><br><span class="line"><span class="keyword">var</span> b = a</span><br><span class="line">b = &#123;<span class="attr">name</span>: <span class="string">'b'</span>&#125;</span><br><span class="line">请问现在 a.name 是多少？</span><br><span class="line">答案：a</span><br></pre></td></tr></table></figure>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = &#123;<span class="attr">name</span>: <span class="string">'a'</span>&#125;</span><br><span class="line"><span class="keyword">var</span> b = a</span><br><span class="line">b.name = <span class="string">'b'</span></span><br><span class="line">请问现在 a.name 是多少？</span><br><span class="line">答案：<span class="string">'b'</span></span><br></pre></td></tr></table></figure>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = &#123;<span class="attr">name</span>: <span class="string">'a'</span>&#125;</span><br><span class="line"><span class="keyword">var</span> b = a</span><br><span class="line">b = <span class="literal">null</span></span><br><span class="line">请问现在 a 是什么？</span><br><span class="line">答案：name：<span class="string">'a'</span></span><br></pre></td></tr></table></figure>
-<p>深复制是什么鬼?<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="number">1</span></span><br><span class="line"><span class="keyword">var</span> b = a</span><br><span class="line">b = <span class="number">2</span> <span class="comment">//这个时候改变 b</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="内存图"><a href="#内存图" class="headerlink" title="内存图"></a>内存图</h3><p>jS 引擎将内存分为代码区和数据区，这里主要看的是数据区.</p>
+<p>数据区可分为Stack（栈内存） 和 Heap（堆内存）：</p>
+<p>1.Stack（栈内存）：简单类型的数据直接存在 Stack 里</p>
+<p>2.Heap（堆内存）：复杂类型的数据存在Heap中，然后把 Heap中所存数据的地址存在 Stack 里</p>
+<h3 id="GC（Garbage-collection）垃圾回收"><a href="#GC（Garbage-collection）垃圾回收" class="headerlink" title="GC（Garbage collection）垃圾回收"></a>GC（Garbage collection）垃圾回收</h3><p>垃圾回收：如果一个对象没有被引用，那么他就是垃圾，将被回收<br>注意：IE6中有个BUG，不能再页面当前标签关闭时就把document中的引用变为垃圾（其他浏览器均可）。这便导致了内存泄漏，使得该被标记为垃圾的东西没有被标记为垃圾，内存会永久占着，直到将整个浏览器关闭。</p>
+<p>下面这个API可以解决这个问题：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">window</span>.onunload = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="built_in">document</span>.body.onclick = <span class="literal">null</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="深复制是什么鬼"><a href="#深复制是什么鬼" class="headerlink" title="深复制是什么鬼?"></a>深复制是什么鬼?</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="number">1</span></span><br><span class="line"><span class="keyword">var</span> b = a</span><br><span class="line">b = <span class="number">2</span> <span class="comment">//这个时候改变 b</span></span><br></pre></td></tr></table></figure>
 <p>a 完全不受 b 的影响<br>那么我们就说这是一个深复制<br>对于简单类型的数据来说，赋值就是深拷贝。<br>对于复杂类型的数据（对象）来说，才要区分浅拷贝和深拷贝。</p>
 <p>这是一个浅拷贝的例子<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = &#123;<span class="attr">name</span>: <span class="string">'frank'</span>&#125;</span><br><span class="line"><span class="keyword">var</span> b = a</span><br><span class="line">b.name = <span class="string">'b'</span></span><br><span class="line">a.name === <span class="string">'b'</span> <span class="comment">// true</span></span><br></pre></td></tr></table></figure></p>
 <p>因为我们对 b 操作后，a 也变了</p>
@@ -108,7 +114,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/10/26/JS里的数据类型转换/" data-id="cjnot9jks000314x72xmdcpcd" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/10/26/JS里的数据类型转换/" data-id="cjnotbh52000320x7u79c1llu" class="article-share-link">Share</a>
       
       
     </footer>
