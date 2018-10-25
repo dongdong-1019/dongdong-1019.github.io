@@ -62,6 +62,60 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-JS里的数据类型转换" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/10/26/JS里的数据类型转换/" class="article-date">
+  <time datetime="2018-10-25T16:30:51.000Z" itemprop="datePublished">2018-10-26</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/10/26/JS里的数据类型转换/">JS里的数据类型转换</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="类型转换"><a href="#类型转换" class="headerlink" title="类型转换"></a>类型转换</h1><h3 id="任意类型转字符串"><a href="#任意类型转字符串" class="headerlink" title="任意类型转字符串"></a>任意类型转字符串</h3><h5 id="1-String-x"><a href="#1-String-x" class="headerlink" title="1.String(x)"></a>1.String(x)</h5><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">String</span>(<span class="number">1</span>)</span><br><span class="line"><span class="comment">//"1"</span></span><br><span class="line"><span class="built_in">String</span>(<span class="literal">true</span>)</span><br><span class="line"><span class="comment">//"true"</span></span><br><span class="line"><span class="built_in">String</span>(<span class="literal">null</span>)</span><br><span class="line"><span class="comment">//"null"</span></span><br><span class="line"><span class="built_in">String</span>(<span class="literal">undefined</span>)</span><br><span class="line"><span class="comment">//"undefined"</span></span><br><span class="line"><span class="built_in">String</span>(&#123;&#125;)</span><br><span class="line"><span class="comment">//"[object Object]"</span></span><br></pre></td></tr></table></figure>
+<h5 id="2-x-toString"><a href="#2-x-toString" class="headerlink" title="2. x.toString()"></a>2. x.toString()</h5><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">(<span class="number">1</span>).toString()</span><br><span class="line"><span class="comment">//"1"</span></span><br><span class="line"><span class="literal">true</span>.toString()</span><br><span class="line"><span class="comment">//"true"</span></span><br><span class="line"><span class="literal">null</span>.tostring()</span><br><span class="line"><span class="comment">//VM119:1 Uncaught TypeError: Cannot read property 'tostring' of null</span></span><br><span class="line">    <span class="comment">//at &lt;anonymous&gt;:1:6</span></span><br><span class="line"><span class="comment">///(anonymous) @ VM119:1</span></span><br><span class="line"><span class="literal">undefined</span>.toString()</span><br><span class="line"><span class="comment">///VM148:1 Uncaught TypeError: Cannot read property 'toString' of undefined</span></span><br><span class="line">    <span class="comment">//at &lt;anonymous&gt;:1:11</span></span><br><span class="line"><span class="comment">//(anonymous) @ VM148:1</span></span><br><span class="line">&#123;&#125;.toString()</span><br><span class="line"><span class="comment">//VM168:1 Uncaught SyntaxError: Unexpected token .</span></span><br><span class="line">(&#123;&#125;).toString()</span><br><span class="line"><span class="comment">//"[object Object]"</span></span><br></pre></td></tr></table></figure>
+<p>其中==null==与==undefined==会报错。</p>
+<h5 id="3-老司机常用-x-’’"><a href="#3-老司机常用-x-’’" class="headerlink" title="3.老司机常用 x+’’"></a>3.老司机常用 x+’’</h5><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1</span>+<span class="string">''</span></span><br><span class="line"><span class="comment">//"1"</span></span><br><span class="line"><span class="literal">true</span>+<span class="string">''</span></span><br><span class="line"><span class="comment">//"true"</span></span><br><span class="line"><span class="literal">null</span>+<span class="string">''</span></span><br><span class="line"><span class="comment">//"null"</span></span><br><span class="line"><span class="literal">undefined</span>+<span class="string">''</span></span><br><span class="line"><span class="comment">//"undefined"</span></span><br><span class="line">&#123;&#125;+<span class="string">''</span></span><br><span class="line"><span class="comment">//0</span></span><br><span class="line"><span class="keyword">var</span> o = &#123;&#125;</span><br><span class="line"><span class="comment">//undefined</span></span><br><span class="line">o +<span class="string">''</span></span><br><span class="line"><span class="comment">//"[object Object]"</span></span><br></pre></td></tr></table></figure>
+<h4 id="任意类型转数字"><a href="#任意类型转数字" class="headerlink" title="任意类型转数字"></a>任意类型转数字</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Number</span>(x)</span><br><span class="line"><span class="built_in">parseInt</span>(x, <span class="number">10</span>) MDN   <span class="comment">//parse 分析</span></span><br><span class="line"><span class="built_in">parseFloat</span>(x) MDN</span><br><span class="line">x - <span class="number">0</span></span><br><span class="line">+x</span><br></pre></td></tr></table></figure>
+<h4 id="任意类型转布尔"><a href="#任意类型转布尔" class="headerlink" title="任意类型转布尔"></a>任意类型转布尔</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Boolean</span>(x)</span><br><span class="line"></span><br><span class="line">!!x</span><br></pre></td></tr></table></figure>
+<p>除了以下五个值的转换结果为false，其他的值全部为true<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="literal">undefined</span></span><br><span class="line"><span class="literal">null</span></span><br><span class="line"><span class="number">-0</span>或+<span class="number">0</span></span><br><span class="line"><span class="literal">NaN</span></span><br><span class="line"><span class="string">''</span>（空字符串）</span><br></pre></td></tr></table></figure></p>
+<p>注意，所有对象（包括空对象）的转换结果都是true，甚至连false对应的布尔对象new Boolean(false)也是true.</p>
+<p>所有对象的布尔值都是true，这是因为 JavaScript 语言设计的时候，出于性能的考虑，如果对象需要计算才能得到布尔值，对于obj1 &amp;&amp; obj2这样的场景，可能会需要较多的计算。为了保证性能，就统一规定，对象的布尔值为true。</p>
+<h3 id="面试题"><a href="#面试题" class="headerlink" title="面试题"></a>面试题</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="number">1</span></span><br><span class="line"><span class="keyword">var</span> b = a</span><br><span class="line">b = <span class="number">2</span></span><br><span class="line">请问 a 显示是几？  </span><br><span class="line">答案：<span class="number">1</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = &#123;<span class="attr">name</span>: <span class="string">'a'</span>&#125;</span><br><span class="line"><span class="keyword">var</span> b = a</span><br><span class="line">b = &#123;<span class="attr">name</span>: <span class="string">'b'</span>&#125;</span><br><span class="line">请问现在 a.name 是多少？</span><br><span class="line">答案：a</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = &#123;<span class="attr">name</span>: <span class="string">'a'</span>&#125;</span><br><span class="line"><span class="keyword">var</span> b = a</span><br><span class="line">b.name = <span class="string">'b'</span></span><br><span class="line">请问现在 a.name 是多少？</span><br><span class="line">答案：<span class="string">'b'</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = &#123;<span class="attr">name</span>: <span class="string">'a'</span>&#125;</span><br><span class="line"><span class="keyword">var</span> b = a</span><br><span class="line">b = <span class="literal">null</span></span><br><span class="line">请问现在 a 是什么？</span><br><span class="line">答案：name：<span class="string">'a'</span></span><br></pre></td></tr></table></figure>
+<p>深复制是什么鬼?<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="number">1</span></span><br><span class="line"><span class="keyword">var</span> b = a</span><br><span class="line">b = <span class="number">2</span> <span class="comment">//这个时候改变 b</span></span><br></pre></td></tr></table></figure></p>
+<p>a 完全不受 b 的影响<br>那么我们就说这是一个深复制<br>对于简单类型的数据来说，赋值就是深拷贝。<br>对于复杂类型的数据（对象）来说，才要区分浅拷贝和深拷贝。</p>
+<p>这是一个浅拷贝的例子<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = &#123;<span class="attr">name</span>: <span class="string">'frank'</span>&#125;</span><br><span class="line"><span class="keyword">var</span> b = a</span><br><span class="line">b.name = <span class="string">'b'</span></span><br><span class="line">a.name === <span class="string">'b'</span> <span class="comment">// true</span></span><br></pre></td></tr></table></figure></p>
+<p>因为我们对 b 操作后，a 也变了</p>
+<p>什么是深拷贝了，就是对 Heap 内存进行完全的拷贝。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = &#123;<span class="attr">name</span>: <span class="string">'frank'</span>&#125;</span><br><span class="line"><span class="keyword">var</span> b = deepClone(a) <span class="comment">// deepClone 还不知道怎么实现</span></span><br><span class="line">b.name = <span class="string">'b'</span></span><br><span class="line">a.name === <span class="string">'a'</span> <span class="comment">// true</span></span><br></pre></td></tr></table></figure></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/10/26/JS里的数据类型转换/" data-id="cjnot2r1a000000x7l9gbxg30" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-JS数据类型" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2018/10/17/JS数据类型/" class="article-date">
@@ -118,7 +172,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/10/17/JS数据类型/" data-id="cjnd1geps0001p4x7bm3n39hd" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/10/17/JS数据类型/" data-id="cjnot2r1h000300x7yfw5hw0k" class="article-share-link">Share</a>
       
       
     </footer>
@@ -175,7 +229,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/06/12/CSS常见布局写法/" data-id="cjnd1gepn0000p4x7rnmyjsdl" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/06/12/CSS常见布局写法/" data-id="cjnot2r1e000100x7c3d41qxc" class="article-share-link">Share</a>
       
       
     </footer>
@@ -249,7 +303,7 @@ left: 0;
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/05/28/css初学/" data-id="cjnd1gepv0003p4x7bzbaak18" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/05/28/css初学/" data-id="cjnot2r1k000600x7mb5pt9lw" class="article-share-link">Share</a>
       
       
     </footer>
@@ -297,7 +351,7 @@ left: 0;
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/05/10/html标签列表/" data-id="cjnd1gepy0006p4x7ji19c57e" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/05/10/html标签列表/" data-id="cjnot2r1n000800x7zj8s28m4" class="article-share-link">Share</a>
       
       
     </footer>
@@ -411,7 +465,7 @@ left: 0;
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/04/20/HTML简单学习/" data-id="cjnd1gepu0002p4x7f9sqggkw" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/04/20/HTML简单学习/" data-id="cjnot2r1g000200x78oet5hrp" class="article-share-link">Share</a>
       
       
     </footer>
@@ -507,7 +561,7 @@ left: 0;
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/04/13/git入门使用/" data-id="cjnd1gepw0004p4x7tqf9uj9t" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/04/13/git入门使用/" data-id="cjnot2r1i000400x7zlh2laa5" class="article-share-link">Share</a>
       
       
     </footer>
@@ -551,7 +605,7 @@ left: 0;
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/04/12/第二篇博客/" data-id="cjnd1geqa0008p4x7igt67wlz" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/04/12/第二篇博客/" data-id="cjnot2r1m000700x705r2492r" class="article-share-link">Share</a>
       
       
     </footer>
@@ -589,7 +643,7 @@ left: 0;
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/04/10/开博大吉/" data-id="cjnd1gepz0007p4x79tkc0hh3" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/04/10/开博大吉/" data-id="cjnot2r1o000900x7ptkif3lz" class="article-share-link">Share</a>
       
       
     </footer>
@@ -634,7 +688,7 @@ left: 0;
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/04/10/hello-world/" data-id="cjnd1gepx0005p4x7ds2o5gpe" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/04/10/hello-world/" data-id="cjnot2r1j000500x7y85jione" class="article-share-link">Share</a>
       
       
     </footer>
@@ -675,6 +729,10 @@ left: 0;
       <ul>
         
           <li>
+            <a href="/2018/10/26/JS里的数据类型转换/">JS里的数据类型转换</a>
+          </li>
+        
+          <li>
             <a href="/2018/10/17/JS数据类型/">JS数据类型</a>
           </li>
         
@@ -688,10 +746,6 @@ left: 0;
         
           <li>
             <a href="/2018/05/10/html标签列表/">html标签列表</a>
-          </li>
-        
-          <li>
-            <a href="/2018/04/20/HTML简单学习/">HTML简单学习</a>
           </li>
         
       </ul>
